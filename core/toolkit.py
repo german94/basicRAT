@@ -9,7 +9,11 @@ import subprocess
 import sys
 import urllib
 import zipfile
+from subprocess import call
 
+def alert(text):
+    call(['notify-send', text])
+    return 'Alert created'
 
 def cat(file_path):
     if os.path.isfile(file_path):

