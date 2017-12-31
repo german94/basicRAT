@@ -1,0 +1,12 @@
+Funcionalidades
+	keylogger
+	webcam
+	minar
+	broadcaster de funcionalidades
+
+	Pasar al exe
+	Ocultarlo
+	Escanear puertos
+	Replicación
+
+Probar cliente en windows y en otra red, ver que onda con el firewall y el puerto
