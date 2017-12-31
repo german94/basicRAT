@@ -27,7 +27,7 @@ BANNER = '''
          https://github.com/vesche/basicRAT
 '''
 CLIENT_COMMANDS = [ 'cat', 'execute', 'ls', 'persistence', 'pwd', 'scan',
-                    'selfdestruct', 'survey', 'unzip', 'wget' ]
+                    'selfdestruct', 'survey', 'unzip', 'wget', 'alert' ]
 HELP_TEXT = '''Command             | Description
 ---------------------------------------------------------------------------
 cat <file>          | Output a file to the screen.

