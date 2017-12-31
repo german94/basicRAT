@@ -13,8 +13,8 @@ from core import *
 
 
 # change these to suit your needs
-HOST = 'basicrat@sytes.net'
-PORT = 80
+HOST = 'basicrat.sytes.net'
+PORT = 1337
 
 # seconds to wait before client will attempt to reconnect
 CONN_TIMEOUT = 30
