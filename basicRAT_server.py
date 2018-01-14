@@ -57,7 +57,7 @@ class Server(threading.Thread):
         super(Server, self).__init__()
         self.s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         self.s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-        self.s.bind(('0.0.0.0', port))
+        self.s.bind(('', port))
         self.s.listen(5)
 
     def run(self):
