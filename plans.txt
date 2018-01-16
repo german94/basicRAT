@@ -1,12 +1,12 @@
-Funcionalidades
-	keylogger
-	webcam
-	minar
-	broadcaster de funcionalidades
+# Para hacer
 
-	Pasar al exe
-	Ocultarlo
-	Escanear puertos
-	Replicación
+## Funcionalidades
+- [ ] keylogger
+- [ ] webcam
+- [ ] minar
+- [ ] broadcaster de funcionalidades
 
-Probar cliente en windows y en otra red, ver que onda con el firewall y el puerto
+- [ ] Pasar a exe
+- [ ] Ocultarlo
+- [ ] Escanear puertos
+- [ ] Replicación
