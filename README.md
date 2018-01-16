@@ -3,7 +3,7 @@
 ## Para hacer
 
 ### Principal
-- [ ] Pasar a exe
+- [x] Pasar a exe
 - [ ] Ocultarlo
 - [ ] Escanear puertos
 - [ ] Replicación
