@@ -1,19 +1,21 @@
 # basicRAT
 
-# Para hacer
+## Para hacer
 
-## Funcionalidades
-- [ ] keylogger
-- [ ] webcam
-- [ ] minar
-- [ ] broadcaster de funcionalidades
-
+### Principal
 - [ ] Pasar a exe
 - [ ] Ocultarlo
 - [ ] Escanear puertos
 - [ ] Replicación
 
-## More Todo
+### Funcionalidades
+- [ ] keylogger
+- [ ] webcam
+- [ ] minar
+- [ ] broadcaster de funcionalidades
+- [ ] p2p
+
+### Mas cosas
 * Interactive shell
 * Client binary generation tool (cross-platform)
   * Pyinstaller
