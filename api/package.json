@@ -1,0 +1,31 @@
+{
+  "name": "rat_api",
+  "version": "1.0.0",
+  "description": "Rat Api",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/german94/basicRAT.git"
+  },
+  "keywords": [
+    "RAT"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/german94/basicRAT/issues"
+  },
+  "homepage": "https://github.com/german94/basicRAT#readme",
+  "devDependencies": {
+    "nodemon": "^1.17.1"
+  },
+  "dependencies": {
+    "express": "^4.16.2",
+    "mongoose": "^5.0.9",
+    "npm": "^5.7.1"
+  }
+}
