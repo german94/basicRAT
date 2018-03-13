@@ -41,5 +41,4 @@ for ip in getIps():
 	if check(ip):
 		availableIps.append(ip)
 
-
-for ip in availableIps:
+print availableIps
