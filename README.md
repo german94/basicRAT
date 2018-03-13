@@ -30,7 +30,6 @@
     * Linux: bash history, var logs, audit logs, etc
     * Windows: Event logs, prefetch, etc
 * Screenshot
-* Keylogger
 * Expand toolkit (unrar, sysinfo)
 * Scanning utilities (probe scan / ping sweep, scanning subnet)
 * Password dumping (mimikatz / gsecdump)

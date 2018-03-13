@@ -31,7 +31,6 @@ else:
     print 'This platform is not supported.'
     sys.exit(1)
 
-
 def client_loop(conn, command_executor, dhkey):
     
     while True:
